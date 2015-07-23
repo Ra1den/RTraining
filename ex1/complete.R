@@ -1,5 +1,6 @@
 complete <- function(directory, id = 1:332){
   
+  #Load data
   allfiles <-list.files(path = directory, pattern = "*.csv")
   filelist <- allfiles[id]
   data <- data.frame()
