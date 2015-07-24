@@ -14,3 +14,4 @@ vignettes/*.pdf
 
 # CSVs
 /ex1/specdata/*
+.Rproj.user
