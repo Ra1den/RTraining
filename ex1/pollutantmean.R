@@ -1,18 +1,33 @@
 
 
-pollutantmean <- function(directory="./specdata/", pollutant="aa", id = 1:332){
+pollutantmean <- function(directory="specdata", pollutant="sulfate", id = 1:332){
 
 #Get file listing
-files <- dir(directory)
+files <- paste(file.path(directory, paste(formatC(id, width=3, flag="0"), ".csv",sep="")),sep="")
+all_data <- data.frame()
 
+#Load files
 for(file in files){
-  print(paste(directory, file, sep=""))
+  my_file <- read.csv(file)
+  all_data <- rbind(all_data, my_file)
 }
 
-my_file <- read.csv("./specdata/312.csv")
+mean(all_data[,pollutant], na.rm = TRUE)
 
-all_data <- data.frame()
-my_file <- read.csv("./specdata/312.csv")
- all_data <- rbind(all_data, my_file)
- print(head(all_data))
+}
+
+complete <- function(directory="specdata", id = 1:332){
+  
+  #Get file listing
+  files <- paste(file.path(directory, paste(formatC(id, width=3, flag="0"), ".csv",sep="")),sep="")
+  all_data <- data.frame()
+  
+  #Load files
+  for(file in files){
+    my_file <- read.csv(file)
+    all_data <- rbind(all_data, my_file)
+  }
+  
+  
+  
 }
